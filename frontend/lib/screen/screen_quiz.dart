@@ -7,7 +7,9 @@ import 'package:frontend/widget/widget_candidate.dart';
 
 class QuizScreen extends StatefulWidget {
   List<Quiz> quizs;
+
   QuizScreen({required this.quizs});
+
   @override
   _QuizScreenState createState() => _QuizScreenState();
 }
@@ -105,22 +107,22 @@ class _QuizScreenState extends State<QuizScreen> {
                   onPressed: _answers[_currentIndex] == -1
                       ? null
                       : () {
-                    if (_currentIndex == widget.quizs.length - 1) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResultScreen(
-                            answers: _answers,
-                            quizs: widget.quizs,
-                          ),
-                        ),
-                      );
-                    } else {
-                      _answerState = [false, false, false, false];
-                      _currentIndex += 1;
-                      _controller.next();
-                    }
-                  },
+                          if (_currentIndex == widget.quizs.length - 1) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ResultScreen(
+                                  answers: _answers,
+                                  quizs: widget.quizs,
+                                ),
+                              ),
+                            );
+                          } else {
+                            _answerState = [false, false, false, false];
+                            _currentIndex += 1;
+                            _controller.next();
+                          }
+                        },
                 ),
               ),
             ),
