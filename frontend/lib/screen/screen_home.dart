@@ -19,8 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       isLoading = true;
     });
-    final response =
-    await http.get("???"); // api 호출을 위한 http
+    final response = await http
+        .get(Uri.parse("https://drf-quiz-test.herokuapp.com/quiz/3/")); // api 호출을 위한 http
     if (response.statusCode == 200) {
       setState(() {
         quizs = parseQuizs(utf8.decode(response.bodyBytes));
@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       color: Colors.deepPurple,
                       onPressed: () {
-                        _scaffoldKey.currentState.showSnackBar(
+                        _scaffoldKey.currentState!.showSnackBar(
                           SnackBar(
                             content: Row(
                               children: <Widget>[
